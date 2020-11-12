@@ -1,4 +1,4 @@
-module github.com.jindezgm.etcdmap
+module github.com/jindezgm/etcdmap
 
 go 1.14
 
