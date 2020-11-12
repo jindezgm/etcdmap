@@ -70,12 +70,12 @@ func newCache(client *clientv3.Client, path string, typ reflect.Type, codec Code
 		c.path = path + "/"
 	}
 	// Initialize cache.
+	c.ctx, c.cancel = context.WithCancel(context.Background())
 	rev, err := c.sync()
 	if nil != err {
 		return nil, err
 	}
 	// Create handlers.
-	c.ctx, c.cancel = context.WithCancel(context.Background())
 	for i := range handlers {
 		c.handlers[i] = newHandler(handlers[i])
 	}
